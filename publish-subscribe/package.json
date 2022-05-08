@@ -1,0 +1,22 @@
+{
+  "name": "publishsubscribe",
+  "version": "1.0.0",
+  "description": "aqui van todos los trabajos de software 3, año 2022",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mannuluss/TrabajosSoftwareIII.git"
+  },
+  "author": "felipe rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mannuluss/TrabajosSoftwareIII/issues"
+  },
+  "homepage": "https://github.com/mannuluss/TrabajosSoftwareIII#readme",
+  "dependencies": {
+    "mqtt": "^4.3.7"
+  }
+}

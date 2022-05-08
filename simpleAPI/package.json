@@ -1,0 +1,14 @@
+{
+  "name": "simpleapi",
+  "version": "1.0.0",
+  "description": "api simple con metodo post y get",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
