@@ -1,23 +1,49 @@
-const mqtt = require('mqtt')
-const client = mqtt.connect('mqtt://127.0.0.1:1883', { host:"127.0.0.1",port:"1883",username: "publisher1" })
+/**
+ * Codigo dedicado a crear una publicacion en el servidor MQTT
+ */
 
-const topic1 = "/nodejs/mqtt"
-const topic2 = "topic2"
+const mqtt = require('mqtt');
 
-client.on('connect', function () {
-    console.log('someone connected!');
-    client.subscribe([topic1], function (err) {
-        if (!err) {
-            client.publish(topic1, 'Hello mqtt ' + Date.now())
-        } else {
-            console.error(err);
-        }
-    })
+/**
+ * Configuracion de la conexion al servidor MQTT
+ */
+const options = {
+    // clientId: 'client123', // Se puede definir un cliente, de lo contrario el servidor define un cliente
+    // username: 'username', // Usuario para conectar al servidor
+    // password: 'password' // Contraseña para conectar al servidor
+}
+
+/**
+ * Crear un cliente conectado al servidor MQTT
+ */
+const client = mqtt.connect("mqtt://127.0.0.1:1883", options);
+
+/**
+ * Señar error en la conexion al servidor
+ */
+client.on("error", (error) => {
+    console.error(error);
+});
+
+/**
+ * Señal reconectando al servidor
+ */
+client.on('reconnect', () => {
+    console.log('Reconect');
 })
-console.log('aqui');
 
-client.on('message', function (topic, message) {
-    // message is Buffer
-    console.log(message.toString())
-    //client.end()
-})
+/**
+ * funcion que se conecta al servicio de mosquitto
+ */
+async function conectionMQTT() {
+    return new Promise((resolve, reject) => {
+
+        client.on('connect', (stream) => {
+            console.log("conectado al MQTT....")
+            return resolve(stream);
+        })
+    });
+};
+
+module.exports.client = client;
+module.exports.conectionMQTT = conectionMQTT;

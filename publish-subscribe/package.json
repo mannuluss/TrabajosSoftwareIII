@@ -4,7 +4,8 @@
   "description": "aqui van todos los trabajos de software 3, año 2022",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "pub": "node publisher.js",
+    "sub": "node subscriber.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/mannuluss/TrabajosSoftwareIII#readme",
   "dependencies": {
+    "express": "^4.18.1",
     "mqtt": "^4.3.7"
   }
 }
